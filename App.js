@@ -1,20 +1,57 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from "react";
+import {
+  DefaultTheme,
+  Provider as PaperProvider,
+  BottomNavigation,
+  Text,
+} from "react-native-paper";
+import { StyleSheet } from "react-native";
 
-export default function App() {
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: "yellow",
+    accent: "black",
+  },
+};
+
+const AboutRoute = () => <Text>About</Text>;
+
+const TechStackRoute = () => <Text>Tech Stack</Text>;
+
+const AccountsRoute = () => <Text>Accounts</Text>;
+
+const App = () => {
+  const [index, setIndex] = React.useState(0);
+  const [routes] = React.useState([
+    { key: "about", title: "About", icon: "account" },
+    { key: "techStack", title: "Tech Stack", icon: "language-javascript" },
+    { key: "accounts", title: "Accounts", icon: "linkedin" },
+  ]);
+
+  const renderScene = BottomNavigation.SceneMap({
+    about: AboutRoute,
+    techStack: TechStackRoute,
+    accounts: AccountsRoute,
+  });
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <PaperProvider theme={theme}>
+      <BottomNavigation
+        navigationState={{ index, routes }}
+        onIndexChange={setIndex}
+        renderScene={renderScene}
+        style={styles.navbar}
+      />
+    </PaperProvider>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  navbar: {
+    backgroundColor: "black",
   },
 });
+
+export default App;
