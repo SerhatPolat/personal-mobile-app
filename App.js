@@ -5,7 +5,6 @@ import {
   BottomNavigation,
   Text,
 } from "react-native-paper";
-import { StyleSheet } from "react-native";
 
 const theme = {
   ...DefaultTheme,
@@ -42,16 +41,9 @@ const App = () => {
         navigationState={{ index, routes }}
         onIndexChange={setIndex}
         renderScene={renderScene}
-        style={styles.navbar}
       />
     </PaperProvider>
   );
 };
-
-const styles = StyleSheet.create({
-  navbar: {
-    backgroundColor: "black",
-  },
-});
 
 export default App;
