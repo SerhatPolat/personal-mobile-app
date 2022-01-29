@@ -4,7 +4,7 @@ import {
   Provider as PaperProvider,
   BottomNavigation,
 } from "react-native-paper";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, FlatList } from "react-native";
 import profilfoto from "./assets/profilfoto.jpg";
 
 const theme = {
@@ -29,9 +29,27 @@ const AboutRoute = () => (
   </View>
 );
 
-const TechStackRoute = () => <Text>Tech Stack</Text>;
+const TechStackRoute = () => (
+  <View style={styles.container}>
+    <Text style={styles.text1}>My Tech Stack</Text>
+    <FlatList
+      data={[
+        { key: "HTML" },
+        { key: "CSS" },
+        { key: "Sass" },
+        { key: "Bootstrap" },
+        { key: "JavaScript" },
+        { key: "TypeScript" },
+        { key: "React.js" },
+        { key: "React Native" },
+        { key: "Vue.js" },
+      ]}
+      renderItem={({ item }) => <Text style={styles.text3}>{item.key}</Text>}
+    />
+  </View>
+);
 
-const AccountsRoute = () => <Text>Accounts</Text>;
+const AccountsRoute = () => <View style={styles.container}></View>;
 
 const App = () => {
   const [index, setIndex] = React.useState(0);
