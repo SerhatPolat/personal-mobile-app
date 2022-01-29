@@ -3,8 +3,9 @@ import {
   DefaultTheme,
   Provider as PaperProvider,
   BottomNavigation,
+  Button,
 } from "react-native-paper";
-import { View, Text, StyleSheet, Image, FlatList } from "react-native";
+import { View, Text, StyleSheet, Image, FlatList, Linking } from "react-native";
 import profilfoto from "./assets/profilfoto.jpg";
 
 const theme = {
@@ -49,7 +50,30 @@ const TechStackRoute = () => (
   </View>
 );
 
-const AccountsRoute = () => <View style={styles.container}></View>;
+const AccountsRoute = () => (
+  <View style={styles.container}>
+    <Button
+      icon="github"
+      onPress={() => Linking.openURL("https://github.com/SerhatPolat")}
+    >
+      <Text style={styles.btn}>Github</Text>
+    </Button>
+    <Button
+      icon="linkedin"
+      onPress={() =>
+        Linking.openURL("https://www.linkedin.com/in/serhat-polat-9655a61bb")
+      }
+    >
+      <Text style={styles.btn}>Linkedin</Text>
+    </Button>
+    <Button
+      icon="alpha-m"
+      onPress={() => Linking.openURL("https://medium.com/@serhatpolat")}
+    >
+      <Text style={styles.btn}>Medium</Text>
+    </Button>
+  </View>
+);
 
 const App = () => {
   const [index, setIndex] = React.useState(0);
@@ -100,6 +124,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     marginTop: 20,
+  },
+
+  btn: {
+    color: "white",
+    fontSize: 20,
   },
 
   image: {
