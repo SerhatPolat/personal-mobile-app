@@ -32,7 +32,7 @@ const AboutRoute = () => (
 
 const TechStackRoute = () => (
   <View style={styles.container}>
-    <Text style={styles.text1}>My Tech Stack</Text>
+    <Text style={styles.heading}>My Tech Stack</Text>
     <FlatList
       data={[
         { key: "HTML" },
@@ -64,7 +64,7 @@ const AccountsRoute = () => (
         Linking.openURL("https://www.linkedin.com/in/serhat-polat-9655a61bb")
       }
     >
-      <Text style={styles.btn}>Linkedin</Text>
+      <Text style={styles.btn}>LinkedIn</Text>
     </Button>
     <Button
       icon="alpha-m"
@@ -102,11 +102,18 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: "1",
+    flex: 1,
     backgroundColor: "black",
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
+  },
+
+  heading: {
+    color: "yellow",
+    fontWeight: "bold",
+    fontSize: 25,
+    paddingTop: 30,
   },
 
   text1: {
